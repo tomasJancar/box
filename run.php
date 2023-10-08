@@ -16,3 +16,4 @@ $response = $application->run($request);
 
 echo "<<< In:\n" . Message::toString($request) . "\n\n";
 echo ">>> Out:\n" . Message::toString($response) . "\n\n";
+
