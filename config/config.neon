@@ -1,0 +1,21 @@
+parameters:
+    userName: tomas@jancar.cz
+    apiKey: a72ec840a1c6d5cf21c0e0f3628866c3
+
+services:
+ -  App\Api\HttpClientFactory
+ -  App\Validation\PackageValidator
+ -  App\Package\PackageReader
+ -
+    class: GuzzleHttp\Client
+    factory: App\Api\HttpClientFactory::create()
+
+ - App\Api\Client
+ - App\Product\ProductMapper
+ - App\Package\PackagingMapper
+ - App\RequestHandler
+ - App\Api\RequestBuilder(apiKey: %apiKey%, userName: %userName%)
+ - App\Package\DatabasePackageCache
+ - App\Package\PackageFallbackProcessor
+
+ - App\Api\RequestExceptionFactory
